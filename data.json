@@ -1,0 +1,238 @@
+{
+  "subjects": [
+    {
+      "id": "maths",
+      "name": "Mathematics",
+      "description": "Core Class 10 mathematics chapters with concept videos and notes.",
+      "chapters": [
+        {
+          "id": "real-numbers",
+          "title": "Real Numbers",
+          "overview": "Euclid's division algorithm, Fundamental Theorem of Arithmetic, and applications.",
+          "teachers": [
+            {
+              "name": "Physics Wallah",
+              "channel": "PW Class 10",
+              "videoId": "B2z8hC4x8M0",
+              "topic": "Euclid Division Lemma & HCF"
+            },
+            {
+              "name": "Vedantu",
+              "channel": "Vedantu 9&10",
+              "videoId": "1a2b3c4d5e6",
+              "topic": "Fundamental Theorem of Arithmetic"
+            },
+            {
+              "name": "Magnet Brains",
+              "channel": "Magnet Brains",
+              "videoId": "f7g8h9i0j1k",
+              "topic": "LCM/HCF Applications"
+            }
+          ],
+          "videos": [
+            {
+              "title": "Complete Real Numbers in One Shot",
+              "youtubeId": "B2z8hC4x8M0",
+              "duration": "48:12"
+            },
+            {
+              "title": "Important Questions + NCERT Practice",
+              "youtubeId": "n7pQ6rT5uV4",
+              "duration": "35:50"
+            }
+          ],
+          "notes": [
+            {
+              "type": "text",
+              "content": "Key formula: HCF(a, b) × LCM(a, b) = a × b. Practice proof-based questions from Ex 1.2."
+            },
+            {
+              "type": "link",
+              "content": "https://ncert.nic.in/textbook/pdf/jemh101.pdf"
+            }
+          ]
+        },
+        {
+          "id": "quadratic-equations",
+          "title": "Quadratic Equations",
+          "overview": "Standard form, solving by factorization and quadratic formula.",
+          "teachers": [
+            {
+              "name": "Physics Wallah",
+              "channel": "PW Class 10",
+              "videoId": "qW8eR4tY6uI",
+              "topic": "Factorization Method"
+            },
+            {
+              "name": "Vedantu",
+              "channel": "Vedantu 9&10",
+              "videoId": "L0mN9bV8cX7",
+              "topic": "Quadratic Formula Derivation"
+            },
+            {
+              "name": "Magnet Brains",
+              "channel": "Magnet Brains",
+              "videoId": "pO9iU8yT7rE",
+              "topic": "Word Problems"
+            }
+          ],
+          "videos": [
+            {
+              "title": "Quadratic Formula Explained",
+              "youtubeId": "L0mN9bV8cX7",
+              "duration": "41:09"
+            },
+            {
+              "title": "Top PYQs + Tricks",
+              "youtubeId": "X5cV7bN9mQ2",
+              "duration": "29:44"
+            }
+          ],
+          "notes": [
+            {
+              "type": "text",
+              "content": "Discriminant D = b² - 4ac decides nature of roots: D>0 distinct, D=0 equal, D<0 no real roots."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "science",
+      "name": "Science",
+      "description": "Physics, chemistry, and biology chapters with trusted teacher guidance.",
+      "chapters": [
+        {
+          "id": "light-reflection",
+          "title": "Light - Reflection and Refraction",
+          "overview": "Ray diagrams, mirror formula, lens formula, and numerical practice.",
+          "teachers": [
+            {
+              "name": "Physics Wallah",
+              "channel": "PW Science",
+              "videoId": "zX1cV2bN3mQ",
+              "topic": "Mirror Formula + Numericals"
+            },
+            {
+              "name": "Vedantu",
+              "channel": "Vedantu Science",
+              "videoId": "aS4dF6gH8jK",
+              "topic": "Refraction Through Lenses"
+            },
+            {
+              "name": "Magnet Brains",
+              "channel": "Magnet Brains",
+              "videoId": "rT5yU7iO9pL",
+              "topic": "Ray Diagram Masterclass"
+            }
+          ],
+          "videos": [
+            {
+              "title": "Light Chapter Full Revision",
+              "youtubeId": "zX1cV2bN3mQ",
+              "duration": "56:03"
+            },
+            {
+              "title": "Lens Numericals Crash Course",
+              "youtubeId": "hJ7kL9mN2bV",
+              "duration": "33:17"
+            }
+          ],
+          "notes": [
+            {
+              "type": "text",
+              "content": "Sign convention is crucial. Keep object distances negative in Cartesian convention."
+            },
+            {
+              "type": "link",
+              "content": "https://ncert.nic.in/textbook/pdf/jesc112.pdf"
+            }
+          ]
+        },
+        {
+          "id": "life-processes",
+          "title": "Life Processes",
+          "overview": "Nutrition, respiration, transportation, and excretion in organisms.",
+          "teachers": [
+            {
+              "name": "Physics Wallah",
+              "channel": "PW Biology",
+              "videoId": "vB3nM5kL7jH",
+              "topic": "Human Digestive System"
+            },
+            {
+              "name": "Vedantu",
+              "channel": "Vedantu Biology",
+              "videoId": "cX4zV6bN8mK",
+              "topic": "Respiration and Excretion"
+            },
+            {
+              "name": "Magnet Brains",
+              "channel": "Magnet Brains",
+              "videoId": "tY6uI8oP0aS",
+              "topic": "Transportation in Plants"
+            }
+          ],
+          "videos": [
+            {
+              "title": "Life Processes One Shot",
+              "youtubeId": "vB3nM5kL7jH",
+              "duration": "52:40"
+            }
+          ],
+          "notes": [
+            {
+              "type": "text",
+              "content": "Remember difference between aerobic and anaerobic respiration with examples for board exams."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "social-science",
+      "name": "Social Science",
+      "description": "History, geography, civics, and economics chapter resources.",
+      "chapters": [
+        {
+          "id": "rise-of-nationalism",
+          "title": "The Rise of Nationalism in Europe",
+          "overview": "French revolution impact, liberalism, and national identity in Europe.",
+          "teachers": [
+            {
+              "name": "Physics Wallah",
+              "channel": "PW SST",
+              "videoId": "gH5jK7lM9nB",
+              "topic": "French Revolution to Nationalism"
+            },
+            {
+              "name": "Vedantu",
+              "channel": "Vedantu Social",
+              "videoId": "wE3rT5yU7iO",
+              "topic": "Liberalism and Conservatism"
+            },
+            {
+              "name": "Magnet Brains",
+              "channel": "Magnet Brains",
+              "videoId": "kL8mN0bV2cX",
+              "topic": "Map-based Revision"
+            }
+          ],
+          "videos": [
+            {
+              "title": "Nationalism in Europe Complete Chapter",
+              "youtubeId": "gH5jK7lM9nB",
+              "duration": "44:26"
+            }
+          ],
+          "notes": [
+            {
+              "type": "text",
+              "content": "Create timeline notes from 1789 to 1871 for quick revision in exams."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
