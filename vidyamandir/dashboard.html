@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dashboard — Vidya Mandir</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nb"></div>
+<div class="page-layout">
+  <div id="sb"></div>
+  <main class="main-content" id="mainArea">
+    <div style="display:flex;align-items:center;justify-content:center;height:200px"><div class="spinner"></div></div>
+  </main>
+</div>
+<script src="js/app.js"></script>
+<script src="js/theme_todo.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  App.initPage('dashboard');
+  const data = await App.loadData();
+  const p = App.getProgress();
+  const adm = App.getData ? App.getData() : JSON.parse(localStorage.getItem('vm_admin_data') || '{"announcements":[]}');
+  const admData = JSON.parse(localStorage.getItem('vm_admin_data') || '{"announcements":[],"pdfs":[],"ncertTopics":[]}');
+
+  let totalDone = 0, totalQz = 0, totalPct = 0;
+  data.subjects.forEach(s => {
+    const sp = p[s.id] || {};
+    totalDone += (sp.done || []).length;
+    Object.values(sp.scores || {}).forEach(sc => { totalQz++; totalPct += sc.pct; });
+  });
+  const avgQ = totalQz ? Math.round(totalPct / totalQz) : 0;
+  const streak = parseInt(localStorage.getItem('vm_streak') || '0');
+  const siteName = localStorage.getItem('vm_site_name') || 'Vidya Mandir';
+  const motd = localStorage.getItem('vm_motd') || 'ज्ञान एक दीपक है जो अंधकार को दूर करता है।';
+  const anns = admData.announcements || [];
+
+  document.getElementById('mainArea').innerHTML = `
+    <div class="page-header au">
+      <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:4px">
+        <div style="font-size:34px;margin-top:2px">🙏</div>
+        <div>
+          <h1>नमस्ते! Welcome to <span class="accent">${siteName}</span></h1>
+          <div class="subtitle" style="font-style:italic;color:var(--saffron);margin-top:4px">"${motd}"</div>
+        </div>
+      </div>
+    </div>
+
+    ${anns.length ? `
+    <div class="card au-1" style="margin-bottom:20px">
+      <div class="card-top-rule"></div>
+      <div class="card-head"><h3>📢 Announcements</h3><span class="tag tag-saffron">${anns.length} notice${anns.length>1?'s':''}</span></div>
+      <div class="card-body" style="padding-top:12px">
+        ${anns.slice(0,4).map(a => `
+          <div style="display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid var(--bdr)">
+            <span class="tag tag-${a.type==='exam'?'terra':a.type==='info'?'indigo':'saffron'}" style="flex-shrink:0;margin-top:2px">${a.type}</span>
+            <div style="flex:1">
+              <div style="font-size:.85rem;font-weight:700;color:var(--t1);margin-bottom:1px">${a.title}</div>
+              <div style="font-size:.78rem;color:var(--t2)">${a.text}</div>
+            </div>
+            <div style="font-size:.69rem;color:var(--t3);flex-shrink:0">${a.date||''}</div>
+          </div>`).join('')}
+      </div>
+    </div>` : ''}
+
+    <div class="stats-strip au-1">
+      <div class="stat-tile"><div class="stat-icon">📚</div><div><div class="stat-num">${data.subjects.length}</div><div class="stat-label">Subjects</div></div></div>
+      <div class="stat-tile"><div class="stat-icon">✅</div><div><div class="stat-num">${totalDone}</div><div class="stat-label">Done</div></div></div>
+      <div class="stat-tile"><div class="stat-icon">🏆</div><div><div class="stat-num">${avgQ}%</div><div class="stat-label">Quiz Avg</div></div></div>
+      <div class="stat-tile"><div class="stat-icon">🔥</div><div><div class="stat-num">${streak}</div><div class="stat-label">Streak</div></div></div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+      <h2 style="font-family:var(--font-d);font-size:1.2rem;color:var(--saffron-l)">विषय &middot; Your Subjects</h2>
+      <span class="tag tag-saffron">4 Core CBSE Subjects</span>
+    </div>
+    <div class="subjects-grid" id="subjGrid"></div>
+
+    <div style="margin-top:28px;margin-bottom:13px;display:flex;align-items:center;justify-content:space-between">
+      <h2 style="font-family:var(--font-d);font-size:1.1rem;color:var(--saffron-l)">📋 Recent Tasks</h2>
+      <a href="todo.html" class="btn btn-ghost btn-sm">All tasks →</a>
+    </div>
+    <div id="todoPreview" style="max-width:680px"></div>`;
+
+  // Subject cards
+  document.getElementById('subjGrid').innerHTML = data.subjects.map((s, i) => {
+    const pct = App.getSubjPct(s.id, s);
+    const sp = p[s.id] || {};
+    const done = (sp.done || []).length;
+    const last = sp.last?.title || 'Not started yet';
+    return `<a href="subject.html?id=${s.id}" class="subj-card au" style="animation-delay:${i*70}ms;--sc-bar:${s.gradient};--sc-glow:${s.glow};--sc-bg:${s.bg};--sc-border:${s.border}">
+      <div class="subj-card-glow"></div>
+      <div class="sc-top">
+        <div class="sc-icon">${s.icon}</div>
+        <div class="sc-arrow">→</div>
+      </div>
+      <div class="sc-name">${s.name}</div>
+      <div class="sc-hindi">${s.nameHi}</div>
+      <div class="sc-desc" style="margin-top:6px">${s.description}</div>
+      <div class="sc-meta">
+        <div class="sc-mi">📄 ${s.chapters.length} ch.</div>
+        <div class="sc-mi">✅ ${done} done</div>
+      </div>
+      <div style="margin-bottom:11px">
+        <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--t3);margin-bottom:4px">
+          <span>Progress</span><span>${pct}%</span>
+        </div>
+        <div class="pbar"><div class="pfill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="sc-footer">
+        <span style="font-size:.71rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:155px;color:var(--t3)">⏱ ${last}</span>
+        <div class="sc-pill">${pct > 0 ? 'Continue →' : 'Start →'}</div>
+      </div>
+    </a>`;
+  }).join('');
+
+  // Recent todos
+  const todos = TodoPanel.getData().slice(0, 4);
+  document.getElementById('todoPreview').innerHTML = todos.length
+    ? `<div class="todo-items">${todos.map(t => TodoPanel.itemHTML(t)).join('')}</div>`
+    : `<div style="color:var(--t3);font-size:.84rem;padding:10px 0">No tasks yet. <a href="todo.html" style="color:var(--saffron)">Add your first study task →</a></div>`;
+});
+</script>
+</body>
+</html>
