@@ -1,0 +1,288 @@
+/* Global design tokens and base styles for a clean, modern UI. */
+:root {
+  --bg: #f5f7fb;
+  --panel: #ffffff;
+  --text: #1c2340;
+  --muted: #667085;
+  --primary: #3b5bdb;
+  --primary-dark: #2f49ac;
+  --border: #dce3f5;
+  --success: #2e9b5b;
+  --radius: 14px;
+  --shadow: 0 12px 30px rgba(28, 35, 64, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(180deg, #eff2ff 0%, var(--bg) 100%);
+  color: var(--text);
+}
+
+/* Shared utility styles used across student and admin pages. */
+.topbar,
+.panel,
+.sub-panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.topbar {
+  width: min(1200px, 92%);
+  margin: 22px auto;
+  padding: 22px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+p {
+  margin: 6px 0 0;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.layout {
+  width: min(1200px, 92%);
+  margin: 0 auto 28px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 250px 280px 1fr;
+}
+
+.panel {
+  padding: 18px;
+}
+
+.list {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+/* Interactive cards for subject and chapter lists. */
+.list button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid var(--border);
+  background: #f8faff;
+  border-radius: 10px;
+  padding: 11px 12px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.list button:hover,
+.list button.active {
+  border-color: var(--primary);
+  background: #eef2ff;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.badge {
+  background: #e8f7ef;
+  color: var(--success);
+  border: 1px solid #bfe7cf;
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.content-block {
+  margin-top: 20px;
+}
+
+.card-grid,
+.video-grid {
+  margin-top: 10px;
+  display: grid;
+  gap: 12px;
+}
+
+.card-grid {
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.teacher-card,
+.video-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  background: #fbfcff;
+}
+
+.teacher-card p,
+.video-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Responsive embedded YouTube video container. */
+.video-frame {
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.video-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.watch-toggle {
+  margin-top: 10px;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.watch-toggle:hover {
+  background: var(--primary-dark);
+}
+
+.notes-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+}
+
+.notes-list a {
+  color: var(--primary);
+}
+
+/* Admin page styles for login and dashboard management. */
+.admin-page {
+  width: min(1100px, 92%);
+  margin: 24px auto;
+}
+
+.admin-auth,
+.admin-dashboard {
+  padding: 22px;
+}
+
+.hidden {
+  display: none;
+}
+
+.admin-grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+}
+
+.sub-panel {
+  padding: 16px;
+}
+
+.form-grid {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+input,
+textarea,
+select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+}
+
+textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+button {
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: #e9ecf8;
+  color: var(--text);
+}
+
+.message {
+  margin-top: 12px;
+  min-height: 1.1rem;
+  font-weight: 500;
+}
+
+/* Layout breakpoints for tablet and mobile screens. */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

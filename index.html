@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 10 Learning Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>Class 10 Learning Hub</h1>
+        <p>Study smarter with curated videos, notes, and trusted teachers.</p>
+      </div>
+      <a class="admin-link" href="admin.html">Admin Panel</a>
+    </header>
+
+    <main class="layout">
+      <aside class="panel subject-panel">
+        <h2>Subjects</h2>
+        <p class="muted">Select a subject to explore its chapters.</p>
+        <ul id="subjectList" class="list"></ul>
+      </aside>
+
+      <section class="panel chapter-panel">
+        <h2 id="chapterHeading">Chapters</h2>
+        <p class="muted">Choose a chapter to view videos, notes, and teacher recommendations.</p>
+        <ul id="chapterList" class="list"></ul>
+      </section>
+
+      <section class="panel content-panel">
+        <div class="panel-header">
+          <h2 id="contentTitle">Start by choosing a chapter</h2>
+          <div id="progressBadge" class="badge">Progress: 0%</div>
+        </div>
+        <p id="contentOverview" class="muted">
+          Your selected chapter details will appear here.
+        </p>
+
+        <div id="teacherSection" class="content-block">
+          <h3>Teacher Sections</h3>
+          <div id="teacherCards" class="card-grid"></div>
+        </div>
+
+        <div id="videoSection" class="content-block">
+          <h3>Videos</h3>
+          <div id="videoCards" class="video-grid"></div>
+        </div>
+
+        <div id="notesSection" class="content-block">
+          <h3>Notes</h3>
+          <ul id="notesList" class="notes-list"></ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>

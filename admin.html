@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class 10 Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="admin-page">
+      <section id="loginSection" class="panel admin-auth">
+        <h1>Admin Login</h1>
+        <p class="muted">Use password <strong>1234</strong> to manage subjects and chapters.</p>
+        <form id="loginForm" class="form-grid">
+          <label for="adminPassword">Password</label>
+          <input id="adminPassword" type="password" required placeholder="Enter admin password" />
+          <button type="submit">Login</button>
+        </form>
+        <p id="loginMessage" class="message"></p>
+        <a class="admin-link" href="index.html">← Back to student view</a>
+      </section>
+
+      <section id="dashboardSection" class="panel admin-dashboard hidden">
+        <div class="panel-header">
+          <h1>Content Management</h1>
+          <button id="logoutBtn" class="secondary-btn">Logout</button>
+        </div>
+
+        <div class="admin-grid">
+          <article class="sub-panel">
+            <h2>Current Data Snapshot</h2>
+            <p class="muted">Quickly review stored subjects and chapters.</p>
+            <ul id="adminSummary" class="notes-list"></ul>
+          </article>
+
+          <article class="sub-panel">
+            <h2>Add / Update Chapter Content</h2>
+            <form id="contentForm" class="form-grid">
+              <label for="subjectName">Subject Name</label>
+              <input id="subjectName" required placeholder="e.g., Mathematics" />
+
+              <label for="chapterTitle">Chapter Title</label>
+              <input id="chapterTitle" required placeholder="e.g., Pair of Linear Equations" />
+
+              <label for="chapterOverview">Chapter Overview</label>
+              <textarea id="chapterOverview" required placeholder="Short chapter summary"></textarea>
+
+              <label for="teacherName">Teacher Name</label>
+              <input id="teacherName" required placeholder="e.g., Vedantu" />
+
+              <label for="teacherChannel">Teacher Channel</label>
+              <input id="teacherChannel" required placeholder="e.g., Vedantu 9&10" />
+
+              <label for="teacherTopic">Teacher Topic Focus</label>
+              <input id="teacherTopic" required placeholder="e.g., Graph Method" />
+
+              <label for="teacherVideoId">Teacher Video YouTube ID</label>
+              <input id="teacherVideoId" required placeholder="e.g., dQw4w9WgXcQ" />
+
+              <label for="videoTitle">Video Title</label>
+              <input id="videoTitle" required placeholder="e.g., Complete Revision Session" />
+
+              <label for="videoId">Video YouTube ID</label>
+              <input id="videoId" required placeholder="e.g., dQw4w9WgXcQ" />
+
+              <label for="videoDuration">Video Duration</label>
+              <input id="videoDuration" required placeholder="e.g., 42:15" />
+
+              <label for="notesType">Notes Type</label>
+              <select id="notesType">
+                <option value="text">Text</option>
+                <option value="link">Link</option>
+              </select>
+
+              <label for="notesContent">Notes Content</label>
+              <textarea
+                id="notesContent"
+                required
+                placeholder="Paste note text or a URL based on note type"
+              ></textarea>
+
+              <button type="submit">Save Content</button>
+            </form>
+            <p id="saveMessage" class="message"></p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="admin.js" defer></script>
+  </body>
+</html>
